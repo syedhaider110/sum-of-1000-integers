@@ -1,0 +1,286 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/types.h>
+#include<sys/wait.h>
+ int main()
+{
+ int arr[1000];
+int s=0;
+int k;
+//store numbers in array
+for(int i=0;i<1000;i++)
+{
+arr[i]=i+1;
+
+}
+int a[10][2];
+for(int i=0;i<10;i++)
+pipe(a[i]);
+//varible declaration
+int p1;
+int p2;
+int p3;
+int p4;
+int p5;
+int p6;
+int p7;
+int p8;
+int p9;
+int p10;
+
+//process 1
+
+p1=fork();
+if(p1==0)
+{
+int sum1=0;
+int start = 0;
+int end = 100;
+for(start =0; start<end; start++)
+{
+sum1=sum1+arr[start];
+}
+
+write(a[0][1],&sum1,sizeof(sum1));
+close(a[0][1]);
+}
+
+else
+{
+wait(NULL);
+
+ read(a[0][0],&k,sizeof(k));
+s=s+k;
+close(a[0][0]);
+
+
+//process 2
+p2=fork();
+if(p2==0)
+{
+int sum2=0;
+int start = 101;
+int end = 200;
+for(start =101; start<end; start++)
+{
+sum2=sum2+arr[start];
+}
+write(a[1][1],&sum2,sizeof(sum2));
+close(a[1][1]);
+}
+else
+{
+wait(NULL);
+
+read(a[1][0],&k,sizeof(k));
+s=s+k;
+close(a[1][0]);
+
+//process 3
+
+p3=fork();
+if(p3==0)
+{
+int sum3=0;
+int start = 201;
+int end = 300;
+for(start =0; start<end; start++)
+{
+sum3=sum3+arr[start];
+}
+write(a[2][1],&sum3,sizeof(sum3));
+close(a[2][1]);
+}
+else
+{
+wait(NULL);
+
+read(a[2][0],&k,sizeof(k));
+s=s+k;
+close(a[2][0]);
+
+//process 4
+
+p4=fork();
+if(p4==0)
+{
+int sum4=0;
+int start = 301;
+int end = 400;
+for(start =0; start<end; start++)
+{
+sum4=sum4+arr[start];
+}
+
+write(a[3][1],&sum4,sizeof(sum4));
+
+close(a[3][1]);
+}
+
+else
+{
+wait(NULL);
+
+read(a[3][0],&k,sizeof(k));
+s=s+k;
+close(a[3][0]);
+
+//process 5
+
+p5=fork();
+
+if(p5==0)
+{
+int sum5=0;
+int start = 401;
+int end = 500;
+for(start =0; start<end; start++)
+{
+sum5=sum5+arr[start];
+}
+write(a[4][1],&sum5,sizeof(sum5));
+close(a[4][1]);
+}
+else
+{
+wait(NULL);
+
+read(a[4][0],&k,sizeof(k));
+s=s+k;
+close(a[4][0]);
+//process 6
+p6=fork();
+if(p6==0)
+{
+int sum6=0;
+int start = 501;
+int end = 600;
+for(start =0; start<end; start++))
+{
+sum6=sum6+arr[start];
+}
+write(a[5][1],&sum6,sizeof(sum6));
+close(a[5][1]);
+}
+else
+{
+wait(NULL);
+
+read(a[5][0],&k,sizeof(k));
+s=s+k;
+close(a[5][0]);
+
+//process 7
+
+p7=fork();
+if(p7==0)
+{
+int sum7=0;
+int start = 601;
+int end = 100;
+for(start =0; start<end; start++)
+{
+sum7=sum7+arr[start];
+}
+
+write(a[6][1],&sum7,sizeof(sum7));
+close(a[6][1]);
+
+
+}
+
+else
+{
+wait(NULL);
+
+read(a[6][0],&k,sizeof(k));
+s=s+k;
+close(a[6][0]);
+
+//process 8
+
+p8=fork();
+if(p8==0)
+{
+int sum8=0;
+int start = 701;
+int end = 800;
+for(start =0; start<end; start++)
+{
+sum8=sum8+arr[start];
+}
+
+write(a[7][1],&sum8,sizeof(sum8));
+close(a[7][1]);
+
+
+}
+
+else
+{
+wait(NULL);
+
+read(a[7][0],&k,sizeof(k));
+s=s+k;
+close(a[7][0]);
+
+//process 9
+
+p9=fork();
+if(p9==0)
+{
+int sum9=0;
+int start = 801;
+int end = 900;
+for(start =0; start<end; start++)
+{
+sum9=sum9+arr[start];
+}
+write(a[8][1],&sum9,sizeof(sum9));
+close(a[8][1]);
+
+}
+
+else
+{
+wait(NULL);
+read(a[8][0],&k,sizeof(k));
+s=s+k;
+close(a[8][0]);
+
+//proess 10
+
+p10=fork();
+if(p10==0)
+{
+int sum10=0;
+int start = 901;
+int end = 1000;
+for(start =0; start<end; start++)
+{
+sum10=sum10+arr[start];
+}
+write(a[9][1],&sum10,sizeof(sum10));
+close(a[9][1]);
+}
+else
+{
+wait(NULL);
+read(a[9][0],&k,sizeof(k));
+s=s+k;
+close(a[9][0]);
+
+printf("Sum of 1st 1000 numbers: %d \n",s);
+}
+    }
+}
+    }
+}
+    }
+}
+    }
+}
+    }
+return 0;
+}
